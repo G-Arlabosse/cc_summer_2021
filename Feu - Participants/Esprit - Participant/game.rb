@@ -7,7 +7,7 @@ class Game
 
     def initialize()
         @map = Map.new(Constant::HEIGHT, Constant::LENGTH)
-        @hero = Hero.new("Vous", Constant::SPIRIT_CHARACTER)
+        @hero = Hero.new("Vous", Constant::HERO_CHARACTER)
         @spirit = Spirit.new("Esprit", Constant::SPIRIT_CHARACTER)
     end
 
@@ -16,21 +16,17 @@ class Game
 
         while !victory
             @spirit.turn(@map)
-            @spirit.turn(@map)
-            @spirit.turn(@map)
-            @spirit.turn(@map)
-            @spirit.turn(@map)
             @map.print()
             if check_victory(@spirit.character)
                 puts "L'esprit gagne... Malheur !"
                 return
             end
-            @spirit.turn(@map)
+            @hero.turn(@map)
             @map.print()
-            #if check_victory(@hero.character)
-            #    puts "Et non l'esprit gagne quand même !"
-            #    return
-            #end
+            if check_victory(@hero.character)
+                puts "Le héros a gagné"
+                return
+            end
         end
     end
 

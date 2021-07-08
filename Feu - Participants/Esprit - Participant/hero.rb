@@ -7,8 +7,6 @@ class Hero < Player
 
     def turn(map)
         super
-        puts "Tu joue pas !"
-        return
         loop do
             print "Jeton à mettre à la colonne n° : "
             input = gets.chomp 
@@ -20,10 +18,7 @@ class Hero < Player
                 puts "Il ne faut entrer qu'un chiffre"
                 next
             end
-            pos = input.to_i + 1
-            if pos == 7
-              pos = 0
-            end
+            pos = input.to_i
             if pos < 0 || pos >= map.length
                 puts "Le numéro de la colonne entrée n'est pas entre 0 et 6"
                 next
